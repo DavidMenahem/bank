@@ -1,0 +1,57 @@
+version: "3.9"
+services:
+  discovery-server:
+    build:
+      context: ./discovery-server
+    image: discovery-server
+    container_name: discovery-server
+    ports:
+      - 8761:8761
+    networks:
+      - bank
+
+  configserver:
+    build: 
+      context: ./configserver
+    image: configserver
+    container_name: configserver
+    ports:
+      - 9999:9999
+    network_mode: "host"
+    networks:
+      - bank
+
+  bank:
+    build:
+      context: ./bank
+    image: bank
+    container_name: bank
+    ports:
+      - 1000:1000
+    network_mode: "host"
+    networks:
+       - bank
+
+  balance:
+    build:
+      context: ./balance
+    image: balance
+    container_name: balance
+    ports:
+      - 1001:1001
+    network_mode: "host"
+    networks:
+      - bank
+
+  atm:
+    build:
+      context: ./atm
+    image: atm
+    container_name: atm
+    ports:
+      - 1002:1002
+    networks:
+      - bank
+
+networks:
+  bank: {}
