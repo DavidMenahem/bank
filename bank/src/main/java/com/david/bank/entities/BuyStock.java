@@ -1,6 +1,5 @@
 package com.david.bank.entities;
 
-import com.david.bank.constants.Action;
 import com.david.bank.constants.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -24,7 +23,7 @@ public class BuyStock {
     
     Transaction transaction;
 
-    Action action;
+    //Action action;
 
     double price;
 }

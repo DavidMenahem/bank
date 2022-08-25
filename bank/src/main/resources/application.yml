@@ -1,14 +1,34 @@
+server:
+  port: 1000
+
 spring:
   jpa:
     debug: true
     database: mysql
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
   datasource:
     platform: mysql
     url: jdbc:mysql://localhost:3306/bank
     username: root
-    password: ${SQL_PASSWORD}
+    password: 1234
     driverClassName: com.mysql.cj.jdbc.Driver
+
+  application:
+    name: bank
+  config:
+    import: optional:configserver:http://localhost:10000
+  cloud:
+    config:
+      fail-fast: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    instance:
+      lease-renewal-interval-in-seconds: 5
+      instance-id: ${spring.application.name}:${random.int}
+

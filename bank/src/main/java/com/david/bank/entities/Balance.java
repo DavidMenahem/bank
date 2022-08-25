@@ -3,14 +3,11 @@ package com.david.bank.entities;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.ManyToOne;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class balance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class Balance {
     Long id;
 
     @ManyToOne
@@ -23,9 +20,5 @@ public class balance {
 
     public double getBalance() {
         return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 }

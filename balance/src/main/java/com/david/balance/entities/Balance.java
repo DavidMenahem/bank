@@ -1,4 +1,4 @@
-package com.david.bank.entities;
+package com.david.balance.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -8,27 +8,24 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Delta {
-
+public class Balance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @ManyToOne
     BankUser user;
-    double delta;
-
-    String description;
+    double balance;
 
     public Long getId() {
         return id;
     }
 
-    public double getDelta() {
-        return delta;
+    public double getBalance() {
+        return balance;
     }
 
-    public String getDescription() {
-        return description;
+    public void setUser(BankUser user) {
+        this.user = user;
     }
 }
